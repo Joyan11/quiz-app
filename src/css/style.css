@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "score";
+  src: url(../assets/font/MasonSansRegular_Regular.ttf);
+}
+
+@font-face {
+  font-family: "potter-font";
+  src: url(../assets/font/HarryPotter-ov4z.ttf);
+}
+
+@font-face {
+  font-family: "quiz";
+  src: url(../assets/font/sofiapro-light.otf);
+}
+
+.score {
+  font-family: score !important;
+}
+
+.potter-font {
+  font-family: potter-font !important;
+}
+
+.quiz {
+  font-family: quiz !important;
+}
