@@ -95,10 +95,10 @@ export const QuizContainer = () => {
           flexDirection="column"
           flex="1"
           className="quiz">
-          <Text fontSize="3xl">
+          <Text fontSize={{ base: "2xl", md: "3xl" }}>
             Question {questions[currentQuestion]?.questionNo}/10
           </Text>
-          <Text letterSpacing={1} fontSize="2xl">
+          <Text letterSpacing={1} fontSize={{ base: "1xl", md: "2xl" }}>
             {questions[currentQuestion]?.question}
           </Text>
         </Flex>
@@ -124,7 +124,7 @@ export const QuizContainer = () => {
                     borderColor="white.500"
                     color="#fff"
                     variant="outline"
-                    w="85%"
+                    maxW={{ base: "80%", md: "85%" }}
                     m="15px"
                     objectFit="contain">
                     {item.option}
@@ -137,7 +137,7 @@ export const QuizContainer = () => {
                     borderColor="white.500"
                     color="#fff"
                     variant="outline"
-                    w="85%"
+                    w={{ base: "80%", md: "85%" }}
                     m="15px"
                     objectFit="contain"
                     onClick={() =>
