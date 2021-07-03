@@ -189,6 +189,10 @@ export const QuizContainer = () => {
       </>
     );
   } else {
-    return <Box>Loading</Box>;
+    return (
+      <Box mt={4} fontSize="2rem">
+        Loading...
+      </Box>
+    );
   }
 };

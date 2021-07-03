@@ -18,7 +18,7 @@ export const QuizPage = () => {
         bgPosition="top"
         bgRepeat="no-repeat"
         bgSize="100% 100%"
-        height={{ base: "100%", md: "100vh" }}>
+        height={{ base: "100vh", md: "100vh" }}>
         <Navbar />
         <Flex
           mt={{ base: "1rem", md: "3rem" }}
@@ -33,8 +33,8 @@ export const QuizPage = () => {
             <Text fontSize="2xl">Your Score: {currentScore}</Text>
           </Flex>
           <Flex
-            h={{ base: 650, md: 400 }}
-            w={{ base: 370, md: 700 }}
+            maxH={{ base: 650, md: 400 }}
+            maxW={{ base: 370, md: 700 }}
             style={{ backgroundColor: " rgba(0,0,0,0.8)" }}
             flexDirection={{ base: "column", md: "row" }}
             borderRadius="8px">
