@@ -46,6 +46,7 @@ export const Result = () => {
       bgImage="url('https://www.teahub.io/photos/full/294-2945475_severus-snape-wallpaper-hd.jpg')"
       bgRepeat="no-repeat"
       bgSize="cover"
+      bgPosition={{ base: "center" }}
       h="100vh">
       <Navbar />
       <Box position="absolute" top="30%" left="10%">
@@ -77,7 +78,7 @@ export const Result = () => {
         {showBox && (
           <Flex mt={5} mb={5}>
             <Input
-              w="50%"
+              w={{ base: "70%", md: "50%" }}
               style={{ backgroundColor: " rgba(0,0,0,0.8)" }}
               color="#fff"
               onChange={(e) => setText(e.target.value)}></Input>{" "}
@@ -94,7 +95,12 @@ export const Result = () => {
             </Button>
           </Flex>
         )}
-        <Flex maxW="60%" justifyContent="space-between" mt="2rem">
+        <Flex
+          maxW={{ base: "70%", md: "60%" }}
+          ml={{ base: "2rem" }}
+          justifyConten={{ md: "space-between" }}
+          flexDirection={{ base: "column", md: "row" }}
+          mt="2rem">
           <Link to="/">
             <Button
               style={{ backgroundColor: " rgba(0,0,0,0.8)" }}

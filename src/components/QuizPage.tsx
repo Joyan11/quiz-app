@@ -9,7 +9,6 @@ export const QuizPage = () => {
     state: { currentScore, currentQuestion },
     dispatch,
   } = useQuizprovider();
-  const [timer, setTimer] = useState<number>(10);
 
   return (
     <>
@@ -18,21 +17,26 @@ export const QuizPage = () => {
         bgImage="url(https://cdna.artstation.com/p/assets/images/images/031/207/276/large/-1ffff.jpg?1602925838)"
         bgPosition="top"
         bgRepeat="no-repeat"
-        height="100vh">
+        bgSize="100% 100%"
+        height={{ base: "100%", md: "100vh" }}>
         <Navbar />
         <Flex
-          mt="3rem"
+          mt={{ base: "1rem", md: "3rem" }}
           alignItems="center"
           justifyContent="center"
           flexDirection="column"
           color="#fff">
-          <Flex w={700} justifyContent="flex-start" className="score">
+          <Flex
+            w={{ base: 200, md: 700 }}
+            justifyContent="flex-start"
+            className="score">
             <Text fontSize="2xl">Your Score: {currentScore}</Text>
           </Flex>
           <Flex
-            h={400}
-            w={700}
+            h={{ base: 650, md: 400 }}
+            w={{ base: 370, md: 700 }}
             style={{ backgroundColor: " rgba(0,0,0,0.8)" }}
+            flexDirection={{ base: "column", md: "row" }}
             borderRadius="8px">
             <QuizContainer />
           </Flex>

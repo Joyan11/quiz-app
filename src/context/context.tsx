@@ -41,7 +41,7 @@ const QuizContext = createContext<{
   dispatch: () => null,
 });
 
-export const QuizProvider = ({ children }: any) => {
+export const QuizProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <QuizContext.Provider value={{ state, dispatch }}>

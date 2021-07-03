@@ -24,7 +24,6 @@ export const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
         currentScore: 0,
         currentQuestion: 0,
       };
-
     case "ADD_TO_LEADERBOARD":
       return {
         ...state,

@@ -3,7 +3,6 @@ import song from "../assets/music/Lily's Theme.mp3";
 import { useMusicprovider } from "../context/musicContext";
 
 const Player = () => {
-  const { playing, setPlaying } = useMusicprovider();
   const audioRef = useRef();
 
   useEffect(() => {

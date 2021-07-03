@@ -35,7 +35,7 @@ export const Leaderboard = () => {
       <Navbar />
       <Table
         style={{ backgroundColor: " rgba(0,0,0,0.9)" }}
-        w="40%"
+        w={{ base: "20%", md: "40%" }}
         variant="simple"
         marginLeft="auto"
         marginRight="auto">
@@ -51,10 +51,12 @@ export const Leaderboard = () => {
           {leaderBoard?.map((item: Scores) => {
             return (
               <Tr>
-                <Td>{item.name}</Td>
-                <Td>{item.quizname}</Td>
-                <Td>{item.tag}</Td>
-                <Td isNumeric>{item.score}</Td>
+                <Td p={{ base: 2.5, md: 5 }}>{item.name}</Td>
+                <Td p={{ base: 2.5, md: 5 }}>{item.quizname}</Td>
+                <Td p={{ base: 2.5, md: 5 }}>{item.tag}</Td>
+                <Td p={{ base: 2.5, md: 5 }} isNumeric>
+                  {item.score}
+                </Td>
               </Tr>
             );
           })}
