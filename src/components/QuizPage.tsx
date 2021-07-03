@@ -15,10 +15,10 @@ export const QuizPage = () => {
       <Player />
       <Box
         bgImage="url(https://cdna.artstation.com/p/assets/images/images/031/207/276/large/-1ffff.jpg?1602925838)"
-        bgPosition="top"
+        bgPosition={{ base: "left", md: "top" }}
         bgRepeat="no-repeat"
-        bgSize="100% 100%"
-        height={{ base: "100vh", md: "100vh" }}>
+        bgSize="cover"
+        height={{ base: "100%", md: "100vh" }}>
         <Navbar />
         <Flex
           mt={{ base: "1rem", md: "3rem" }}
@@ -35,6 +35,7 @@ export const QuizPage = () => {
           <Flex
             maxH={{ base: 650, md: 400 }}
             maxW={{ base: 370, md: 700 }}
+            pt={{ base: 0, md: 10 }}
             style={{ backgroundColor: " rgba(0,0,0,0.8)" }}
             flexDirection={{ base: "column", md: "row" }}
             borderRadius="8px">
