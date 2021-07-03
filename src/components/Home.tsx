@@ -34,13 +34,17 @@ export const Home = () => {
           <Heading
             size="3xl"
             position="absolute"
-            top={{ base: "30%", md: "20%" }}
+            top={{ base: "20%", md: "20%" }}
             left="8%"
             color="#fff"
             className="potter-font">
             The Wizard Quiz
           </Heading>
-          <Box w="30%" pos="absolute" top="50%" left="10%">
+          <Box
+            w="30%"
+            pos="absolute"
+            top={{ base: "40%", md: "50%" }}
+            left="10%">
             <Flex flexDirection="column">
               <Text
                 fontSize="1.8rem"

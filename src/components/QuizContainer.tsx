@@ -124,7 +124,7 @@ export const QuizContainer = () => {
                     borderColor="white.500"
                     color="#fff"
                     variant="outline"
-                    maxW={{ base: "80%", md: "85%" }}
+                    w={{ base: "80%", md: "85%" }}
                     m="15px"
                     objectFit="contain">
                     {item.option}
