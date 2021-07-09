@@ -1,13 +1,11 @@
 import { Text, Flex, Box } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 import { useQuizprovider } from "../context/context";
 import { Navbar } from "./Navbar";
 import Player from "./Player";
 import { QuizContainer } from "./QuizContainer";
 export const QuizPage = () => {
   const {
-    state: { currentScore, currentQuestion },
-    dispatch,
+    state: { currentScore },
   } = useQuizprovider();
 
   return (

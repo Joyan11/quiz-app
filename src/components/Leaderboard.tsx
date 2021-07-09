@@ -1,8 +1,11 @@
 import { Box, Table, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { useQuizprovider, Scores } from "../context/context";
+import { useQuizprovider } from "../context/context";
+import { Scores } from "../context/types/types";
 import { Navbar } from "./Navbar";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { LeaderBoard, ServerError } from "./types/types";
+
 export const Leaderboard = () => {
   const {
     state: { leaderBoard },
@@ -11,16 +14,22 @@ export const Leaderboard = () => {
 
   const getData = async () => {
     try {
-      const { data } = await axios.get(
+      const { data } = await axios.get<LeaderBoard>(
         `https://quiz-server.joyan11.repl.co/leaderboard`
       );
-      console.log(data);
       dispatch({
         type: "ADD_TO_LEADERBOARD",
         payload: data,
       });
     } catch (error) {
       console.log(error);
+      if (axios.isAxiosError(error)) {
+        const serverError = error as AxiosError<ServerError>;
+        if (serverError && serverError.response) {
+          return serverError.response.data;
+        }
+        console.log(error);
+      }
     }
   };
   useEffect(() => {
@@ -31,7 +40,8 @@ export const Leaderboard = () => {
       bgImage="url('https://www.teahub.io/photos/full/294-2945475_severus-snape-wallpaper-hd.jpg')"
       bgRepeat="no-repeat"
       bgSize="cover"
-      h="100vh">
+      h="100vh"
+      overflow="auto">
       <Navbar />
       <Table
         style={{ backgroundColor: " rgba(0,0,0,0.9)" }}

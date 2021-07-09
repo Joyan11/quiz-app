@@ -1,26 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { Questions } from "../data/type";
 import { reducer } from "../reducer/reducer";
-
-export type Scores = {
-  quizname: string;
-  name: string;
-  score: number;
-  tag: string;
-};
-
-type QuizData = {
-  id: string;
-  name: string;
-  questions: Questions[] | any[];
-};
-
-type InitialStateType = {
-  quizData: QuizData;
-  currentQuestion: number;
-  currentScore: number;
-  leaderBoard: Scores[] | any[];
-};
+import { InitialStateType } from "./types/types";
 
 export const initialState = {
   quizData: {

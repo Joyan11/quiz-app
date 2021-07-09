@@ -7,7 +7,9 @@ export const Navbar = () => {
   return (
     <Flex
       style={{ backgroundColor: " rgba(0,0,0,0.0)" }}
-      justifyContent="flex-end">
+      justifyContent="flex-end"
+      position="sticky"
+      top={0}>
       <Link to="/">
         <Button
           colorScheme="transperent"

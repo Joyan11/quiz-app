@@ -1,33 +1,12 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Flex, Button, Text, Box } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@chakra-ui/icons";
 import { useQuizprovider } from "../context/context";
 
 import { useLocation, useNavigate } from "react-router";
-
-type State = {
-  from: string | null;
-};
-
-export type Choice = {
-  option: string;
-  isRight: boolean;
-};
-
-export type Questions = {
-  questionNo: number;
-  question?: string;
-  choices: Choice[];
-  point: number;
-};
-
-export type Data = {
-  name: string;
-  questions: Questions[];
-  id: string;
-};
+import { Data, ServerError, State } from "./types/types";
 
 export const QuizContainer = () => {
   const {
@@ -56,6 +35,13 @@ export const QuizContainer = () => {
       });
     } catch (error) {
       console.log(error);
+      if (axios.isAxiosError(error)) {
+        const serverError = error as AxiosError<ServerError>;
+        if (serverError && serverError.response) {
+          return serverError.response.data;
+        }
+        console.log(error);
+      }
     }
   };
 
