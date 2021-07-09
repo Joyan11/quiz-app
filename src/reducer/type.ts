@@ -1,4 +1,14 @@
-import { Questions } from "../data/type";
+type Choice = {
+  option: string;
+  isRight: boolean;
+};
+
+type Questions = {
+  questionNo: number;
+  question?: string;
+  choices: Choice[];
+  point: number;
+};
 
 type PersonalScore = {
   quizname: string;
