@@ -4,7 +4,13 @@ import { labelCheck } from "../utils/labelCheck";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "./Navbar";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
+import { toastMessages } from "../utils/toastMessage";
+import { ServerError } from "./types/types";
+
+type Success = {
+  success: boolean;
+};
 
 export const Result = () => {
   const {
@@ -19,7 +25,7 @@ export const Result = () => {
     const label = labelCheck(currentScore);
     if (text !== "") {
       try {
-        const response = await axios.post(
+        const response = await axios.post<Success>(
           "https://quiz-server.joyan11.repl.co/leaderboard",
           {
             data: {
@@ -31,9 +37,17 @@ export const Result = () => {
           }
         );
         if (response.status === 200) {
+          toastMessages("Scored saved to Leaderboard");
         }
       } catch (error) {
         console.log(error);
+        if (axios.isAxiosError(error)) {
+          const serverError = error as AxiosError<ServerError>;
+          if (serverError && serverError.response) {
+            toastMessages(serverError.response.data.message);
+          }
+        }
+        toastMessages("Something went wrong");
       } finally {
         setText("");
         setShowBox(false);

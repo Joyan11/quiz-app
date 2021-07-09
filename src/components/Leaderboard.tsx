@@ -5,6 +5,7 @@ import { Scores } from "../context/types/types";
 import { Navbar } from "./Navbar";
 import axios, { AxiosError } from "axios";
 import { LeaderBoard, ServerError } from "./types/types";
+import { toastMessages } from "../utils/toastMessage";
 
 export const Leaderboard = () => {
   const {
@@ -26,10 +27,10 @@ export const Leaderboard = () => {
       if (axios.isAxiosError(error)) {
         const serverError = error as AxiosError<ServerError>;
         if (serverError && serverError.response) {
-          return serverError.response.data;
+          toastMessages(serverError.response.data.message);
         }
-        console.log(error);
       }
+      toastMessages("Something went wrong");
     }
   };
   useEffect(() => {

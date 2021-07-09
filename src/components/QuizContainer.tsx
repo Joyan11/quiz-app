@@ -7,6 +7,7 @@ import { useQuizprovider } from "../context/context";
 
 import { useLocation, useNavigate } from "react-router";
 import { Data, ServerError, State } from "./types/types";
+import { toastMessages } from "../utils/toastMessage";
 
 export const QuizContainer = () => {
   const {
@@ -38,10 +39,10 @@ export const QuizContainer = () => {
       if (axios.isAxiosError(error)) {
         const serverError = error as AxiosError<ServerError>;
         if (serverError && serverError.response) {
-          return serverError.response.data;
+          toastMessages(serverError.response.data.message);
         }
-        console.log(error);
       }
+      toastMessages("Something went wrong");
     }
   };
 
