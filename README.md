@@ -25,7 +25,7 @@ backend : (https://github.com/Joyan11/quizapp-backend)
 ## Built With
 
 - ReactJS
--
+
 - TypeScript
 
 - useReducer + contextAPI
