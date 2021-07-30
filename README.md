@@ -40,8 +40,6 @@ backend : (https://github.com/Joyan11/quizapp-backend)
 
 - Chakra UI
 
-- ReactPlayer
-
 ## Getting Started
 
 Clone/download the repository to run it on your local machine.
