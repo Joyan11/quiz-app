@@ -1,3 +1,5 @@
+/** @format */
+
 import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { Flex, Button, Text, Box } from "@chakra-ui/react";
@@ -8,6 +10,7 @@ import { useQuizprovider } from "../context/context";
 import { useLocation, useNavigate } from "react-router";
 import { Data, ServerError, State } from "./types/types";
 import { toastMessages } from "../utils/toastMessage";
+import React from "react";
 
 export const QuizContainer = () => {
   const {
@@ -29,7 +32,6 @@ export const QuizContainer = () => {
       const { data } = await axios.get<Data>(
         `https://quiz-server.joyan11.repl.co/quiz/${quizType}`
       );
-      console.log(data);
       dispatch({
         type: "SET_INITIAL_DATA",
         payload: { questions: data.questions, name: data.name, id: data.id },
@@ -47,7 +49,7 @@ export const QuizContainer = () => {
   };
 
   useEffect(() => {
-    getData();
+    quizType && getData();
   }, []);
 
   const quizOptionHandler = (answer: boolean, point: number) => {
@@ -94,51 +96,53 @@ export const QuizContainer = () => {
           flex="1"
           justifyContent="center"
           alignItems="center">
-          {questions[currentQuestion]?.choices.map((item: any) => {
-            return (
-              <>
-                {clickedSession ? (
-                  <Button
-                    className="quiz"
-                    letterSpacing={1}
-                    _hover={{
-                      background: "transperent",
-                    }}
-                    _active={{
-                      background: "transperent",
-                    }}
-                    bgColor={`${item.isRight ? "green.400" : "red.400"}`}
-                    borderColor="white.500"
-                    color="#fff"
-                    variant="outline"
-                    w={{ base: "80%", md: "85%" }}
-                    m="15px"
-                    objectFit="contain">
-                    {item.option}
-                  </Button>
-                ) : (
-                  <Button
-                    className="quiz"
-                    letterSpacing={1}
-                    colorScheme="white"
-                    borderColor="white.500"
-                    color="#fff"
-                    variant="outline"
-                    w={{ base: "80%", md: "85%" }}
-                    m="15px"
-                    objectFit="contain"
-                    onClick={() =>
-                      quizOptionHandler(
-                        item.isRight,
-                        questions[currentQuestion].point
-                      )
-                    }>
-                    {item.option}
-                  </Button>
-                )}
-              </>
-            );
-          })}
+          {React.Children.toArray(
+            questions[currentQuestion]?.choices.map((item: any) => {
+              return (
+                <>
+                  {clickedSession ? (
+                    <Button
+                      className="quiz"
+                      letterSpacing={1}
+                      _hover={{
+                        background: "transperent",
+                      }}
+                      _active={{
+                        background: "transperent",
+                      }}
+                      bgColor={`${item.isRight ? "green.400" : "red.400"}`}
+                      borderColor="white.500"
+                      color="#fff"
+                      variant="outline"
+                      w={{ base: "80%", md: "85%" }}
+                      m="15px"
+                      objectFit="contain">
+                      {item.option}
+                    </Button>
+                  ) : (
+                    <Button
+                      className="quiz"
+                      letterSpacing={1}
+                      colorScheme="white"
+                      borderColor="white.500"
+                      color="#fff"
+                      variant="outline"
+                      w={{ base: "80%", md: "85%" }}
+                      m="15px"
+                      objectFit="contain"
+                      onClick={() =>
+                        quizOptionHandler(
+                          item.isRight,
+                          questions[currentQuestion].point
+                        )
+                      }>
+                      {item.option}
+                    </Button>
+                  )}
+                </>
+              );
+            })
+          )}
           <Flex>
             <Link to="/">
               <Button

@@ -1,4 +1,7 @@
+/** @format */
+
 import { Flex, Button, Box, Text, Heading } from "@chakra-ui/react";
+import React from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuizprovider } from "../context/context";
@@ -54,24 +57,26 @@ export const Home = () => {
                 className="score">
                 Pick A Quiz :
               </Text>
-              {buttontitle.map((item) => {
-                return (
-                  <Link to="/quiz" state={{ from: item }}>
-                    <Button
-                      className="quiz"
-                      style={{ backgroundColor: " rgba(0,0,0,0.8)" }}
-                      colorScheme="white"
-                      borderColor="white.500"
-                      color="#fff"
-                      variant="outline"
-                      w={{ base: "200%", md: "100%" }}
-                      textTransform="capitalize"
-                      mb={10}>
-                      {item}
-                    </Button>
-                  </Link>
-                );
-              })}
+              {React.Children.toArray(
+                buttontitle.map((item) => {
+                  return (
+                    <Link to="/quiz" state={{ from: item }}>
+                      <Button
+                        className="quiz"
+                        style={{ backgroundColor: " rgba(0,0,0,0.8)" }}
+                        colorScheme="white"
+                        borderColor="white.500"
+                        color="#fff"
+                        variant="outline"
+                        w={{ base: "200%", md: "100%" }}
+                        textTransform="capitalize"
+                        mb={10}>
+                        {item}
+                      </Button>
+                    </Link>
+                  );
+                })
+              )}
             </Flex>
           </Box>
         </Box>

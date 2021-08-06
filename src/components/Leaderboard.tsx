@@ -1,3 +1,5 @@
+/** @format */
+
 import { Box, Table, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useQuizprovider } from "../context/context";
@@ -6,6 +8,7 @@ import { Navbar } from "./Navbar";
 import axios, { AxiosError } from "axios";
 import { LeaderBoard, ServerError } from "./types/types";
 import { toastMessages } from "../utils/toastMessage";
+import React from "react";
 
 export const Leaderboard = () => {
   const {
@@ -59,18 +62,20 @@ export const Leaderboard = () => {
           </Tr>
         </thead>
         <Tbody color="#fff">
-          {leaderBoard?.map((item: Scores) => {
-            return (
-              <Tr>
-                <Td p={{ base: 2.5, md: 5 }}>{item.name}</Td>
-                <Td p={{ base: 2.5, md: 5 }}>{item.quizname}</Td>
-                <Td p={{ base: 2.5, md: 5 }}>{item.tag}</Td>
-                <Td p={{ base: 2.5, md: 5 }} isNumeric>
-                  {item.score}
-                </Td>
-              </Tr>
-            );
-          })}
+          {React.Children.toArray(
+            leaderBoard?.map((item: Scores) => {
+              return (
+                <Tr>
+                  <Td p={{ base: 2.5, md: 5 }}>{item.name}</Td>
+                  <Td p={{ base: 2.5, md: 5 }}>{item.quizname}</Td>
+                  <Td p={{ base: 2.5, md: 5 }}>{item.tag}</Td>
+                  <Td p={{ base: 2.5, md: 5 }} isNumeric>
+                    {item.score}
+                  </Td>
+                </Tr>
+              );
+            })
+          )}
         </Tbody>
       </Table>
     </Box>
