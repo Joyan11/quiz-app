@@ -1,3 +1,5 @@
+/** @format */
+
 import { Box, Text, Button, Flex, Input } from "@chakra-ui/react";
 import { useQuizprovider } from "../context/context";
 import { labelCheck } from "../utils/labelCheck";
@@ -112,7 +114,7 @@ export const Result = () => {
         <Flex
           maxW={{ base: "70%", md: "60%" }}
           ml={{ base: "2rem" }}
-          justifyConten={{ md: "space-between" }}
+          justifyContent={{ md: "space-between" }}
           flexDirection={{ base: "column", md: "row" }}
           mt="2rem">
           <Link to="/">
